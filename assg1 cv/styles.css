@@ -78,12 +78,12 @@
     width: 100%;
 }
 
-#col1 .itemNew{
+.expHead #col1 .itemNew{
     font-size: smaller;
     color: #d9dad9;
 }
 
-#col2 .itemNew{
+.expHead #col2 .itemNew{
     font-size: smaller;
     color: #d9dad9;
     width: 100%;
@@ -91,14 +91,94 @@
 
 }
 
-#right-half #col1 .item{
+.expHead #col1 .item{
     font-weight: bold;
     font-size: x-large;
 }
 
-#right-half #col2 .item{
+.expHead #col2 .item{
     width: 100%;
     margin-left: 40%;
     font-size: x-large;
 }
 
+
+.eduHead{
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.eduHead #col1 .item{
+
+    font-weight: bold;
+    font-size: larger;
+
+}
+
+.eduHead #col2 .item{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    margin-left: 10%;
+    font-size: larger;
+}
+
+.eduHead #col1 .itemNew{
+    font-size: smaller;
+    color: #d9dad9;
+}
+
+.eduHead #col2 .itemNew{
+    font-size: smaller;
+    color: #d9dad9;
+    width: 100%; 
+    margin-left: 10%; 
+
+}
+
+.eduHead #col1{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    align-items: start;
+    /* justify-content: center; */
+}
+.eduHead #col2{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    align-items: start;
+    /* justify-content: center; */
+}
+
+/* progress Bar */
+
+  /* circular prog bar */
+  .progress-circle {
+    width: 25%;
+    height: 90px; 
+    justify-content: start;
+  }
+  
+  .progress-circle-bg {
+    fill: none;
+    stroke: #f0f0f0; /* Background color */
+    stroke-width: 8; /* Thickness of the circle */
+  }
+  
+  .progress-circle-bar {
+    fill: none;
+    stroke: #4caf50;
+    stroke-width: 6; 
+    stroke-dashoffset: 0; 
+  }
+
+  .progress-circle-bar2{
+    fill: none;
+    stroke: #979595; 
+    stroke-width: 6; 
+    stroke-dashoffset: 0; 
+  }
+  
