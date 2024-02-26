@@ -1,3 +1,11 @@
+body #right-half{
+    color: #ffffff;
+}
+
+body #left-half{
+    color: #574848;
+}
+
 #mainContainer{
     display: flex;
     width: 100%;
@@ -8,17 +16,17 @@
     flex-direction: column;
     width: 35%;
     
-    background-color: #d9dad9; 
+    background-color: #ffffff; 
     padding: 20px;
     align-items: start;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 #right-half {
     width: 65%;
-    background-color: #839c7e;
+    background-color: #574848;
     padding: 20px;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
 #introRow{
@@ -155,30 +163,53 @@
 
 /* progress Bar */
 
-  /* circular prog bar */
-  .progress-circle {
-    width: 25%;
-    height: 90px; 
-    justify-content: start;
-  }
-  
-  .progress-circle-bg {
-    fill: none;
-    stroke: #f0f0f0; /* Background color */
-    stroke-width: 8; /* Thickness of the circle */
-  }
-  
-  .progress-circle-bar {
-    fill: none;
-    stroke: #4caf50;
-    stroke-width: 6; 
-    stroke-dashoffset: 0; 
-  }
+#skillsCont{
+    display: flex;
+    width: 100%;
+}
 
-  .progress-circle-bar2{
-    fill: none;
-    stroke: #979595; 
-    stroke-width: 6; 
-    stroke-dashoffset: 0; 
-  }
-  
+#skills-l{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
+
+#skills-r{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+
+}
+
+
+.progress-container {
+    width: 300px;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    /* margin: 50px auto; */
+}
+.progress-bar {
+    width: 50%;
+    height: 100%;
+    background-color: #24cf66;
+    border-radius: 10px;
+    border: #ffffff;
+    
+}
+ .progress-bar-90 {
+    width: 90%;
+} 
+.progress-bar-80 {
+    width: 80%;
+} 
+.progress-bar-70{
+    width: 70%;
+
+}
+.progress-bar-40{
+    width: 40%;
+
+}
