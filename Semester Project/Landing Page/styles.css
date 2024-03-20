@@ -1,0 +1,55 @@
+.container-fluid >a{
+  font-size: 200%;
+  font-weight: bold;
+
+}
+.carousel-item {
+    height: 100vh; /*% of the viewport height */
+    overflow: hidden;
+  }
+
+  .carousel-item img {
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: block;
+  }
+
+  #body{
+    background-color: white;
+    color: black;
+  }
+
+  .card{
+    /* padding: 0.5%; */
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    background-color: red;
+    color: green;
+
+    
+  }
+
+  .cardRow{
+    text-align: center;
+  }
+
+.row > p {
+  /* padding: 0.5%; */
+    margin: 10px;
+  font-size: 140%;
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+.centered-text {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
