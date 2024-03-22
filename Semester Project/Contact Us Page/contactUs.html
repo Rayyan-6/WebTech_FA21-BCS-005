@@ -20,23 +20,28 @@
     function handleFormSubmission(event) {
       let name = document.getElementById("name");
       let email = document.getElementById("email");
-      let desciption = document.getElementById("desciption");
+      let description = document.getElementById("description");
       if (name.value) {
       } else {
         event.preventDefault();
+        $("#lowText1").text("Write your full name");
         $("#name").addClass("error");
       }
 
       if (email.value) {
       } else {
         event.preventDefault();
+        $("#lowText2").text("Enter valid email address");
+
         $("#email").addClass("error");
       }
 
-      if (desciption.value) {
+      if (description.value) {
       } else {
         event.preventDefault();
-        $("#desciption").addClass("error");
+        $("#lowText3").text("Write 50-100 characters");
+
+        $("#description").addClass("error");
       }
     }
   </script>
@@ -54,13 +59,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="../Landing Page/landingPage.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="#" style="font-weight: bold;">Contact Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ajax Restful API</a>
+            <a class="nav-link" href="../Ajax Restful API/ajax.html">Ajax Restful API</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -81,17 +86,17 @@
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Enter your name" />
-            <div class="lowText">Write your full name</div>
+            <div class="lowText" id="lowText1"></div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Enter your email" />
-            <div class="lowText">Enter valid email address</div>
+            <div class="lowText" id="lowText2"></div>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control" id="description" rows="6" placeholder="Enter your description"></textarea>
-            <div class="lowText">Write 50-100 characters</div>
+            <div class="lowText" id="lowText3"></div>
           </div>
           <div class="container btnContainer">
             <button type="submit" class="btn btn-primary" id="submitBtn">

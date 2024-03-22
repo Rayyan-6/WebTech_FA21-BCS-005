@@ -29,4 +29,14 @@ body {
 
   .error{
     border:3px solid red;
+
 }
+
+.lowText{
+  color: red;
+}
+
+/* textarea.newC {
+  border: 3px solid red;
+} */
+
