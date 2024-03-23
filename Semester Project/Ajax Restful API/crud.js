@@ -1,6 +1,7 @@
 $(function () {
   loadItems();
   $(".items").on("click", ".delbtn", handleDelete);
+  $(".items").on("click", ".editbtn", handleUpdate);
   // $(".items").on("click", ".addbtn", addItem);
   $(".addbtn").click(addItem);
 });
@@ -19,6 +20,27 @@ function handleDelete() {
       loadItems();
     },
   });
+}
+
+function handleUpdate(){
+  console.log("inside update");
+  // var id = $("#id").val();
+  var title = $("#title").val();
+  var content = $("#content").val();
+  var btn = $(this);
+  var parentDiv = btn.closest(".card");
+  let id = parentDiv.attr("data-id");
+
+  $.get("https://usmanlive.com/wp-json/api/stories/" + id,function(response){
+    $("#updateId").val(response.id);
+    $("#updateTitle").val(response.title);
+    $("#updateContent").val(response.content);
+    $("#updateModal").modal("show");
+
+
+  });
+
+
 }
 
 function addItem() {
