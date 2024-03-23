@@ -1,162 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ajax Restful API</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="crud.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
-</head>
-<body>
+  <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg text-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Book Store</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../Landing Page/landingPage.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../Contact Us Page/contactUs.html">Contact Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight: bold;">Ajax Restful API</a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Book Store</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../Landing Page/landingPage.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Contact Us Page/contactUs.html"
+                >Contact Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="font-weight: bold"
+                >Ajax Restful API</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <p>hvhbkjb</p>
-      <p>hvhbkjb</p>
-      <p>hvhbkjb</p>
-      <p>hvhbkjb</p>
-      <p>hvhbkjb</p>
-      <p>hvhbkjb</p>
-      <p>hvhbkjb</p>
-  
+    <div id="addRow" class="row">
+      <div class="col-auto">
+        <button class="btn btn-success">Add New Item</button>
+      </div>
+    </div>
 
+    <div id="cardContainer" class="row">
+      <!-- <div class="card border-success mb-3" style="max-width: 18rem">
+        <div class="card-header bg-transparent border-success header">
+          Header
+        </div>
+        <div class="card-body text-success">
+          <h5 class="card-title title">Success card title</h5>
+          <p class="card-text content">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-success footer">
+          <Button class="btn">h</Button>
+        </div>
+      </div> -->
+      <p>Loading...</p>
+    </div>
 
-      <footer class="footer bg-dark text-white">
-        <div class="container">
-          <footer class="py-5">
-            <div class="row">
-              <div class="col-6 col-sm-4 col-md-2 mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Home</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Features</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Pricing</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">FAQs</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">About</a>
-                  </li>
-                </ul>
-              </div>
-    
-              <div class="col-6 col-sm-4 col-md-2 mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Home</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Features</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Pricing</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">FAQs</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">About</a>
-                  </li>
-                </ul>
-              </div>
-    
-              <div class="col-6 col-sm-4 col-md-2 mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Home</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Features</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Pricing</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">FAQs</a>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">About</a>
-                  </li>
-                </ul>
-              </div>
-    
-              <div class="col-md-5 offset-md-1 mb-3 text-white">
-                <form>
-                  <h5>Subscribe to our newsletter</h5>
-                  <p>Monthly digest of what's new and exciting from us.</p>
-                  <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                    <label for="newsletter1" class="visually-hidden">Email address</label>
-                    <input id="newsletter1" type="text" class="form-control" placeholder="Email address" />
-                    <button class="btn btn-primary" type="button">
-                      Subscribe
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-    
-            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-              <p>© 2024 Company, Inc. All rights reserved.</p>
-              <ul class="list-unstyled d-flex">
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
-                      <use xlink:href="#twitter"></use>
-                    </svg></a>
+    <footer class="footer bg-dark text-white">
+      <div class="container">
+        <footer class="py-5">
+          <div class="row">
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Home</a>
                 </li>
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
-                      <use xlink:href="#instagram"></use>
-                    </svg></a>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Features</a>
                 </li>
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
-                      <use xlink:href="#facebook"></use>
-                    </svg></a>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">About</a>
                 </li>
               </ul>
             </div>
-          </footer>
-        </div>
-      </footer>
-</body>
+
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Features</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">About</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Features</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-white">About</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3 text-white">
+              <form>
+                <h5>Subscribe to our newsletter</h5>
+                <p>Monthly digest of what's new and exciting from us.</p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                  <label for="newsletter1" class="visually-hidden"
+                    >Email address</label
+                  >
+                  <input
+                    id="newsletter1"
+                    type="text"
+                    class="form-control"
+                    placeholder="Email address"
+                  />
+                  <button class="btn btn-primary" type="button">
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top"
+          >
+            <p>© 2024 Company, Inc. All rights reserved.</p>
+            <ul class="list-unstyled d-flex">
+              <li class="ms-3">
+                <a class="link-body-emphasis" href="#"
+                  ><svg class="bi" width="24" height="24">
+                    <use xlink:href="#twitter"></use></svg
+                ></a>
+              </li>
+              <li class="ms-3">
+                <a class="link-body-emphasis" href="#"
+                  ><svg class="bi" width="24" height="24">
+                    <use xlink:href="#instagram"></use></svg
+                ></a>
+              </li>
+              <li class="ms-3">
+                <a class="link-body-emphasis" href="#"
+                  ><svg class="bi" width="24" height="24">
+                    <use xlink:href="#facebook"></use></svg
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </footer>
+  </body>
 </html>

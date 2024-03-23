@@ -1,5 +1,16 @@
-.container-fluid >a{
-    font-size: 200%;
-    font-weight: bold;
-  
-  }
+.container-fluid > a {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.card {
+  margin: 2%;
+}
+
+#addRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 1%;
+}
+ 
