@@ -1,8 +1,25 @@
-
-
 $(function () {
   loadItems();
+  $(".items").on("click", ".delbtn", handleDelete);
 });
+
+function handleDelete() {
+    console.log("inside delete");
+    var btn= $(this);
+    var parentDiv = btn.closest(".items");
+    let id = parentDiv.attr("data-id");
+    console.log(`id is ${id}`);
+
+    $.ajax({
+        url: "https://usmanlive.com/wp-json/api/stories"+`/${id}`,
+        method: "DELETE",
+        success:function(){
+            loadItems();
+        }
+
+    }
+    );
+}
 
 function loadItems() {
   $.ajax({
@@ -14,20 +31,19 @@ function loadItems() {
 
       for (var i = 0; i < response.length; i++) {
         var rec = response[i];
-        var cardHTML = `
-                        <div class="card border-success mb-3" style="max-width: 18rem">
-                            <div class="card-header bg-transparent border-success header">${rec.id}</div>
-                            <div class="card-body text-success">
-                                <h5 class="card-title title">${rec.title}</h5>
-                                <p class="card-text content">${rec.content}</p>
-                            </div>
-                            <div class="card-footer bg-transparent border-success footer">
-                            <Button class="btn btn-secondary">Edit</Button>
-                            <Button class="btn btn-danger">Delete</Button>
-                            </div>
-                        </div>
-                    `;
-        cardContainer.append(cardHTML);
+        cardContainer.append(`
+        <div class="card border-success mb-3" style="max-width: 18rem" data-id="${rec.id}">
+            <div class="card-header bg-transparent border-success header">${rec.id}</div>
+            <div class="card-body text-success">
+                <h5 class="card-title title">${rec.title}</h5>
+                <p class="card-text content">${rec.content}</p>
+            </div>
+            <div class="card-footer bg-transparent border-success footer">
+            <Button class="btn btn-secondary editbtn">Edit</Button>
+            <Button class="btn btn-danger delbtn">Delete</Button>
+            </div>
+        </div>
+    `);
       }
     },
   });
