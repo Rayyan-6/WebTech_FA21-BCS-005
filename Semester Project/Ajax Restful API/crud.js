@@ -4,6 +4,21 @@ $(function () {
   $(".items").on("click", ".editbtn", handleUpdate);
   // $(".items").on("click", ".addbtn", addItem);
   $(".addbtn").click(addItem);
+  $("#updateSave").click(function () {
+    var id = $("#updateId").val();
+    var title = $("#updateTitle").val();
+    var content = $("#updateContent").val();
+    $.ajax({
+      url: "https://usmanlive.com/wp-json/api/stories/" + id,
+      data:{title,content},
+      method: "PUT",
+      success: function () {
+        
+        $("#updateModal").modal("hide");
+        loadItems();
+      },
+    });
+  });
 });
 
 function handleDelete() {
@@ -22,7 +37,7 @@ function handleDelete() {
   });
 }
 
-function handleUpdate(){
+function handleUpdate() {
   console.log("inside update");
   // var id = $("#id").val();
   var title = $("#title").val();
@@ -31,16 +46,12 @@ function handleUpdate(){
   var parentDiv = btn.closest(".card");
   let id = parentDiv.attr("data-id");
 
-  $.get("https://usmanlive.com/wp-json/api/stories/" + id,function(response){
+  $.get("https://usmanlive.com/wp-json/api/stories/" + id, function (response) {
     $("#updateId").val(response.id);
     $("#updateTitle").val(response.title);
     $("#updateContent").val(response.content);
     $("#updateModal").modal("show");
-
-
   });
-
-
 }
 
 function addItem() {
