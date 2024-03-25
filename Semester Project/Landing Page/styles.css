@@ -61,4 +61,11 @@
   font-weight: bold;
   font-size: xx-large;
 }
-
+.card-img-top{
+  /* height: 250px; */
+  height: 35vh;
+  width: 100vw;
+}
+.col-md-3{
+  height: 45vh;
+}
