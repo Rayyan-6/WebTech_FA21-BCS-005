@@ -1,5 +1,5 @@
 body{
-    background-color: antiquewhite;
+    background-color: rgb(201, 163, 113);
 }
 
 .spinner{
@@ -42,15 +42,31 @@ body{
   /* white-space: nowrap;  */
     
 }
+
 .book-slide::-webkit-scrollbar{
     width: 0;
 }
 .slide-view-card{
+    background-color: rgb(163, 131, 93);
     height: 100%;
     width: 10vh;
-    /* margin-left: 1%; */
     margin-right: 5%;    
 }
+.slide-view-card button{
+    background-color: rgb(117, 93, 64);
+    border-color: rgb(117, 93, 64);
+    color: black;
+    /* font-weight: bold; */
+    
+}
+.slide-view-card button:hover{
+    background-color: rgb(73, 55, 34);
+    border-color: rgb(73, 55, 34);
+    color: white;
+    /* font-weight: bold; */
+}
+
+
 .slide-view-card-body{
     
     height: 80vh;
@@ -102,6 +118,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1%;
 }
 
 

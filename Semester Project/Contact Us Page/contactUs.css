@@ -1,0 +1,54 @@
+body{
+  background-color: rgb(201, 163, 113);
+}
+
+.contact-form {
+  margin-top: 50px;
+}
+.container-fluid >a{
+    font-size: 200%;
+    font-weight: bold;
+  
+  }
+
+  .row{
+    margin: 6px;
+  }
+ 
+  .form-label{
+    font-size: 25px;
+  }
+  .lowText{
+    text-align: right;
+  }
+  .btnContainer{
+    text-align: center;
+  }
+  .btn{
+    width: 50%;
+  }
+  .form-control{
+    background-color: rgb(173, 141, 101);
+    border-color:rgb(173, 141, 101) ;
+  
+  }
+  .error{
+    border:3px solid red;
+    border-color: red;
+}
+
+.lowText{
+  color: rgb(180, 0, 0);
+}
+.btnContainer button{
+  background-color: rgb(117, 93, 64);
+    border-color: rgb(117, 93, 64);
+    color: black;
+}
+.btnContainer button:hover{
+  background-color: rgb(73, 55, 34);
+  border-color: rgb(73, 55, 34);
+  color: white;
+  /* font-weight: bold; */
+}
+
