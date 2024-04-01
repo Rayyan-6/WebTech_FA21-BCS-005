@@ -13,7 +13,6 @@ $(function () {
       data:{title,content},
       method: "PUT",
       success: function () {
-        
         $("#updateModal").modal("hide");
         loadItems();
       },

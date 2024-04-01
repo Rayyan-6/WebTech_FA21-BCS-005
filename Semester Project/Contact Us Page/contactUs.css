@@ -32,6 +32,11 @@ body{
     border-color:rgb(173, 141, 101) ;
   
   }
+  /* .form-control:active{
+    background-color: rgb(173, 141, 101);
+    border-color:rgb(173, 141, 101) ;
+  
+  } */
   .error{
     border:3px solid red;
     border-color: red;
@@ -44,11 +49,15 @@ body{
   background-color: rgb(117, 93, 64);
     border-color: rgb(117, 93, 64);
     color: black;
+    --bs-btn-active-bg:rgb(43, 33, 21);
+  --bs-btn-active-border-color:rgb(43, 33, 21);
+  --bs-btn-active-color:white;
 }
 .btnContainer button:hover{
   background-color: rgb(73, 55, 34);
   border-color: rgb(73, 55, 34);
   color: white;
+  
   /* font-weight: bold; */
 }
 

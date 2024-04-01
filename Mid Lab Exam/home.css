@@ -1,0 +1,48 @@
+body{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.logo-div{
+    display: flex;
+    justify-content: right;
+}
+.logo-row .buttons{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.btn1{
+    margin-right: 20px;
+}
+.nav-bar{
+    height: 50px;
+}
+
+.nav-items{
+    display: flex;
+    flex-direction: row;
+}
+.items{
+    font-weight: bold;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.news-parent{
+    margin-top: 5%;
+}
+
+.first-news-col .news-col{
+    /* height: 100px; */
+}
+.news-heading{
+    font-size: 30px;
+    font-weight: bold;
+}
+.news-heading:hover{
+    color: aqua;
+}
+
+
+
+
