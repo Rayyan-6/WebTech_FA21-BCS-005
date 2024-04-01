@@ -1,12 +1,13 @@
-const image = document.querySelector('.news-col img');
+const images = document.querySelectorAll('.news-col img');
 const displayDiv = document.querySelector('#displayDiv');
 
-image.addEventListener('onmouseenter', function() {
+images.forEach(image => {
+  image.addEventListener('mouseenter', function() {
     displayDiv.style.display = 'block';
-    displayDiv.innerHTML = `Image Source: ${image.getAttribute('src')}`;
-});
+    displayDiv.textContent = `Image Source: ${image.getAttribute('src')}`;
+  });
 
-
-image.addEventListener('onmouseleave', function() {
+  image.addEventListener('mouseleave', function() {
     displayDiv.style.display = 'none';
+  });
 });
