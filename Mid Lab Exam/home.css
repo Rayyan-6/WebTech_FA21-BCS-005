@@ -43,6 +43,13 @@ body{
     color: aqua;
 }
 
+.img-text{
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    position: absolute;
+    top: 40%;
+}
 
 
 
