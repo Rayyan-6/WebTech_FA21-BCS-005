@@ -24,7 +24,10 @@ app.get("/contact-us", function (req, res) {
 app.get("/restful", function (req, res) {
   res.send("restful api page");
 });
-
+mongoose.connect("mongodb://localhost:27017/project").then((data) => {
+  console.log("DB Connected");
+});
 app.listen(4000, () => {
   console.log("Server started at localhost:4000");
 });
+
