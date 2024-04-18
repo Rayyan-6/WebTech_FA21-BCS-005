@@ -1,0 +1,9 @@
+<h1>
+    <%= pageTitle %>
+</h1>
+
+<% for( let index = 0; index < books.length; index++ ) { %>
+<div class="book">
+    <h3 class="book-title"><%= books[index].title %></h3>
+</div>
+<% } %>
