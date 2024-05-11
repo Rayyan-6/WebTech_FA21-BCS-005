@@ -2,6 +2,9 @@ body{
     background-color: rgb(201, 163, 113);
 }
 
+
+
+
 .spinner{
     margin: 1%;
     display: flex;
@@ -104,7 +107,6 @@ body{
     justify-content: center;
     /* align-items: center; */
     margin-top: 2%;
-
 }
 
 .genres-p{
