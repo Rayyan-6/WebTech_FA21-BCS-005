@@ -11,6 +11,7 @@ app.use(expressLayouts);
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/", require("./routes/api/books"));
+app.use("/", require("./routes/api/users"));
 app.use("/", require("./routes/sites/books"));
 
 app.get("/", function (req, res) {
@@ -24,6 +25,13 @@ app.get("/contact-us", function (req, res) {
 app.get("/restful", function (req, res) {
   res.send("restful api page");
 });
+app.get("/signup", function (req, res) {
+  res.render("signup");
+});
+app.get("/login", function (req, res) {
+  res.render("login");
+});
+
 mongoose.connect("mongodb://localhost:27017/project").then((data) => {
   console.log("DB Connected");
 });

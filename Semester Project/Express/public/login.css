@@ -1,0 +1,16 @@
+.login-main-row{
+    height: 80vh;
+}
+.login-main-col{
+    /* height: 100%; */
+}
+.inner-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: rgb(143, 121, 84); */
+}
+
+#submitBtn{
+    margin-top: 5%;
+}

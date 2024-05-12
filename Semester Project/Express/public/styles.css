@@ -32,11 +32,13 @@ body {
   margin-right: 5%;
   width: 15%;
   height: 100%;
+  color: white;
 }
 #signup-btn{
   /* margin-right: 5%; */
   width: 15%;
   height: 100%;
+  color: white;
 }
 
 .contact-form {
@@ -83,8 +85,8 @@ body {
 .btnContainer button {
   background-color: rgb(117, 93, 64);
   border-color: rgb(117, 93, 64);
-  color: black;
-  --bs-btn-active-bg: rgb(43, 33, 21);
+  color: white;
+    --bs-btn-active-bg: rgb(43, 33, 21);
   --bs-btn-active-border-color: rgb(43, 33, 21);
   --bs-btn-active-color: white;
 }

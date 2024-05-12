@@ -5,6 +5,7 @@ let bookSchema = mongoose.Schema({
     author:String,
     genre:String,
     year:Number,
+    price:Number
 });
 
 let Book = mongoose.model("Book", bookSchema);

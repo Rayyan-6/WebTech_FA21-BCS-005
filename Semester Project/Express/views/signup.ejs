@@ -1,0 +1,70 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" />
+            <div class="lowText" id="lowText1"></div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+            <div class="lowText" id="lowText2"></div>
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+            <div class="lowText" id="lowText3"></div>
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Confirm your password" />
+            <div class="lowText" id="lowText4"></div>
+          </div>
+          <div class="container btnContainer">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    function doBindings() {
+      $("#submitBtn").on("click", handleFormSubmission);
+    }
+    $(doBindings);
+    function handleFormSubmission(event) {
+      let name = document.getElementById("name");
+      let email = document.getElementById("email");
+      let description = document.getElementById("description");
+      if (name.value) {
+      } else {
+        event.preventDefault();
+        $("#lowText1").text("Write your full name");
+        $("#name").addClass("error");
+      }
+
+      if (email.value) {
+      } else {
+        event.preventDefault();
+        $("#lowText2").text("Enter valid email address");
+
+        $("#email").addClass("error");
+      }
+
+      if (description.value) {
+      } else {
+        event.preventDefault();
+        $("#lowText3").text("Write 50-100 characters");
+
+        $("#description").addClass("error");
+      }
+    }
+  </script>
