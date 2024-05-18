@@ -5,10 +5,17 @@ h1 {
   text-align: center;
 }
 
-table {
+.mytable {
   width: 100%;
   /* border-collapse: collapse; */
   margin-top: 20px;
+  
+}
+
+.table-row{
+  padding-right: 50px;
+  padding-left: 50px;
+
 }
 
 th,
@@ -19,7 +26,7 @@ td {
 }
 
 td{
-  border-color: green;
+  border: 2px solid green;
 }
 
 th {
@@ -58,11 +65,14 @@ tr:hover {
   display: flex;
   align-items: center;
   background-color: rgb(173, 141, 101);
-  border-color: rgb(173, 141, 101);
+  /* border-color: rgb(173, 141, 101); */
+  border: 2px solid green;
 
   border-radius: 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 .search-box input {
   border: none;

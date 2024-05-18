@@ -8,7 +8,8 @@
     
 
 
-    <table>
+    <div class="row table-row">
+    <table class="mytable">
         <tr>
             <th>Title</th>
             <th>Author</th>
@@ -28,11 +29,12 @@
                     <% } %>
                 </td>
                 <td><%= books[index].year %></td>
-                <td><%= books[index].price %></td>
+                <td>Rs. <%= books[index].price %></td>
                 <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= books[index].title %>')">Buy</button></td> <!-- Buy button -->
             </tr>
         <% } %>
     </table>
+</div>
 
     <!-- JavaScript function for buying a book -->
     <script>
