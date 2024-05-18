@@ -1,41 +1,39 @@
-<div class="container mt-3">
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <form>
+    <div class="row justify-content-center main-signup-row">
+      <div class="col-md-5 signup-main-col">
+
+        <form action="/signup" method="post">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name" />
+            <input type="text" class="form-control" id="name" name="name" value="Rayyan" />
             <div class="lowText" id="lowText1"></div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+            <input type="email" class="form-control" id="email" name="email" value="rayyan6@gmail.com" />
             <div class="lowText" id="lowText2"></div>
           </div>
           <div class="mb-3">
             <label for="Password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+            <input type="password" class="form-control" id="password" name="password" value="test" />
             <div class="lowText" id="lowText3"></div>
           </div>
-          <div class="mb-3">
+           <!-- <div class="mb-3">
             <label for="Password" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Confirm your password" />
+            <input type="password" class="form-control" id="password" name="c-password" value="test" />
             <div class="lowText" id="lowText4"></div>
-          </div>
+          </div>  -->
           <div class="container btnContainer">
             <button type="submit" class="btn btn-primary" id="submitBtn">
               Submit
             </button>
           </div>
         </form>
+
       </div>
     </div>
-  </div>
 
-
-
-
-  <script>
+    
+<script>
     function doBindings() {
       $("#submitBtn").on("click", handleFormSubmission);
     }
@@ -63,7 +61,6 @@
       } else {
         event.preventDefault();
         $("#lowText3").text("Write 50-100 characters");
-
         $("#description").addClass("error");
       }
     }

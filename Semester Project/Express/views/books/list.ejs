@@ -1,9 +1,37 @@
-<h1>
-    <%= pageTitle %>
-</h1>
 
-<% for( let index = 0; index < books.length; index++ ) { %>
-<div class="book">
-    <h3 class="book-title"><%= books[index].title %></h3>
-</div>
-<% } %>
+    <h1><%= pageTitle %></h1>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>Price (PKR)</th>
+            <th>Action</th> <!-- Added column for the "Buy" button -->
+        </tr>
+        <% for (let index = 0; index < books.length; index++) { %>
+            <tr>
+                <td><%= books[index].title %></td>
+                <td><%= books[index].author %></td>
+                <td class="genre-cell">
+                    <% for (let genreIndex = 0; genreIndex < books[index].genre.length; genreIndex++) { %>
+                        <%= books[index].genre[genreIndex] %>
+                        <% if (genreIndex !== books[index].genre.length - 1) { %>, <% } %>
+                    <% } %>
+                </td>
+                <td><%= books[index].year %></td>
+                <td><%= books[index].price %></td>
+                <td><button onclick="buyBook('<%= books[index].title %>')">Buy</button></td> <!-- Buy button -->
+            </tr>
+        <% } %>
+    </table>
+
+    <!-- JavaScript function for buying a book -->
+    <script>
+        function buyBook(title) {
+            // You can implement the logic for buying a book here
+            alert("You have bought the book: " + title);
+        }
+    </script>
+

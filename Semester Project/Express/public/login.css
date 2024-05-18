@@ -14,3 +14,15 @@
 #submitBtn{
     margin-top: 5%;
 }
+
+/* signup */
+
+.main-signup-row{
+    height: 85vh;
+}
+
+.signup-main-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
