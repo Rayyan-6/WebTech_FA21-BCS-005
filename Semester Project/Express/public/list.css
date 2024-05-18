@@ -21,8 +21,10 @@ th, td {
 }
 
 th {
-    background-color: #29c53e;
+    /* background-color: rgb(73, 55, 34); */
+    background-color: rgb(117, 93, 64);
     text-align: center;
+    color: white;
 }
 
 tr:nth-child(even) {
