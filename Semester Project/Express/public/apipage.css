@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(201, 163, 113);
+}
+
+.container-fluid > a {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.card {
+  margin: 2%;
+}
+
+#addRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.form-group {
+  margin-bottom: 0.5%;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+.form-control {
+  margin: 1%;
+  border-color: green;
+}
+.modalField {
+  margin: 0.5%;
+}
+
+.addbtn{
+    width: 150px;
+}
+
+.editbtn{
+    width: 100px;
+    height: 40px;
+
+}
+.delbtn{
+    width: 100px;
+    height: 40px;
+
+}
+.mycard{
+    /* background-color: rgb(117, 93, 64); */
+}

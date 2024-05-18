@@ -37,6 +37,9 @@ app.get("/signup", function (req, res) {
 app.get("/login", function (req, res) {
   res.render("login");
 });
+app.get("/apipage", function (req, res) {
+  res.render("apipage");
+});
 
 // app.post("/signup", async (req, res) => {
 //   let user = await User.findOne({ email: req.body.email });

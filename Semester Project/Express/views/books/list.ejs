@@ -29,7 +29,7 @@
                 </td>
                 <td><%= books[index].year %></td>
                 <td><%= books[index].price %></td>
-                <td><button onclick="buyBook('<%= books[index].title %>')">Buy</button></td> <!-- Buy button -->
+                <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= books[index].title %>')">Buy</button></td> <!-- Buy button -->
             </tr>
         <% } %>
     </table>

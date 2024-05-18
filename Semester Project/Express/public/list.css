@@ -18,9 +18,15 @@ td {
   text-align: left;
 }
 
+td{
+  border-color: green;
+}
+
 th {
   /* background-color: rgb(73, 55, 34); */
   background-color: rgb(117, 93, 64);
+  border: 2px solid green;
+
   text-align: center;
   color: white;
 }
@@ -33,18 +39,19 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
   /* background-color: #c0c0c0; */
-  background-color: transparent;
+  background-color: rgb(173, 141, 101);
 }
 
 tr:hover {
   /* background-color: #ddd; */
-  opacity: 0.6;
+  /* opacity: 0.6; */
 }
 
 .genre-cell {
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
+  
 }
 
 .search-box {
@@ -97,4 +104,9 @@ tr:hover {
 }
 .search-box input::placeholder {
   color: black;
+}
+
+.buy-btn{
+  width:max-content ;
+
 }
