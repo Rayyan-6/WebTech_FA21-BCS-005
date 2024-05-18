@@ -12,7 +12,9 @@ router.get("/api/books", async function (req, res) {
 router.get("/api/books/:id", async (req, res) => {
   try{
     let book = await Book.findById(req.params.id);
-    return res.send(book);
+    // return res.send(book);
+    return res.render("books/oneBook",{ pageTitle: "List All Books", book });
+    
   }
   catch(err){
     return res.status(400).send("Invalid ID");
