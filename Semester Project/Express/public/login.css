@@ -31,16 +31,24 @@
 
 .main-signup-row{
     height: 85vh;
+    /* background: blue; */
+
 }
 
 .signup-main-col{
     display: flex;
     flex-direction: column;
     justify-content: center;
+        /* background: beige; */
+
 }
 
 .sideImg{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.signup-right-col{
+    /* background-color: green; */
 }
