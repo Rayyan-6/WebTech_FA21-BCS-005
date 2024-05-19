@@ -1,8 +1,10 @@
 /* CSS Styles */
 
 
-h1 {
+.list-heading {
   text-align: center;
+  /* color: rgb(43, 33, 21); */
+  color: rgb(117, 93, 64);
 }
 
 .mytable {
@@ -26,13 +28,14 @@ td {
 }
 
 td{
-  border: 2px solid green;
+  /* border: 2px solid green; */
+  border: 2px solid rgb(117, 93, 64);
 }
 
 th {
   /* background-color: rgb(73, 55, 34); */
   background-color: rgb(117, 93, 64);
-  border: 2px solid green;
+  border: 2px solid rgb(43, 33, 21);
 
   text-align: center;
   color: white;
@@ -65,14 +68,15 @@ tr:hover {
   display: flex;
   align-items: center;
   background-color: rgb(173, 141, 101);
-  /* border-color: rgb(173, 141, 101); */
-  border: 2px solid green;
+  border: 2px solid rgb(117, 93, 64);
 
   border-radius: 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   padding: 10px 20px;
   margin-right: 50px;
   margin-left: 50px;
+
+  color: rgb(173, 141, 101);
 }
 .search-box input {
   border: none;
@@ -81,7 +85,15 @@ tr:hover {
   font-size: 16px;
   border-radius: 24px;
   flex: 1;
+  background-color: transparent;
+
+  color: rgb(43, 33, 21);
 }
+
+.search-box input::placeholder {
+  color: rgb(43, 33, 21);
+}
+
 .search-box button {
   /* background-color: #007bff;
     color: #fff;
@@ -108,15 +120,19 @@ tr:hover {
   color: white;
 }
 
-.search-box input {
-  background-color: transparent;
-  color: white;
-}
-.search-box input::placeholder {
-  color: black;
-}
-
 .buy-btn{
   width:max-content ;
+  background-color: rgb(117, 93, 64);
+  border-color: rgb(43, 33, 21);
+
+  --bs-btn-active-bg: rgb(43, 33, 21);
+  --bs-btn-active-border-color: rgb(43, 33, 21);
+  --bs-btn-active-color: white;
+}
+.buy-btn:hover{
+  width:max-content ;
+  background-color: rgb(43, 33, 21);
+  border-color: rgb(117, 93, 64);
+
 
 }

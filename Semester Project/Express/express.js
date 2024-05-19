@@ -27,10 +27,6 @@ app.get("/", function (req, res) {
 app.get("/contact-us", function (req, res) {
   res.render("contact-us");
 });
-
-app.get("/restful", function (req, res) {
-  res.send("restful api page");
-});
 app.get("/signup", function (req, res) {
   res.render("signup");
 });

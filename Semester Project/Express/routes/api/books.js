@@ -9,11 +9,11 @@ router.get("/api/books", async function (req, res) {
 });
 
 // read one
-router.get("/api/books/:id", async (req, res) => {
+router.get("/books/:id", async (req, res) => {
   try{
     let book = await Book.findById(req.params.id);
     // return res.send(book);
-    return res.render("books/oneBook",{ pageTitle: "List All Books", book });
+    return res.render("books/oneBook",{ pageTitle: "Searched Book", book });
     
   }
   catch(err){

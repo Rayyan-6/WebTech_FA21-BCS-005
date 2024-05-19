@@ -1,6 +1,7 @@
- <h1><%= pageTitle %></h1>
+ <h1 class="list-heading"><%= pageTitle %></h1>
 
-<table>
+ <div class="row table-row">
+<table class="mytable">
     <tr>
         <th>Title</th>
         <th>Author</th>
@@ -21,10 +22,11 @@
             </td>
             <td><%= book.year %></td>
             <td><%= book.price %></td>
-            <td><button onclick="buyBook('<%= book.title %>')">Buy</button></td> 
+            <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= book.title %>')">Buy</button></td> 
         </tr> 
 
 </table> 
+</div>
 
 <!-- JavaScript function for buying a book -->
 <script>
