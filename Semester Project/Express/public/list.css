@@ -41,7 +41,9 @@ th {
   color: white;
 }
 tr{
-    color: white;
+    /* color: white; */
+    color: rgb(43, 33, 21);
+    font-size: large; 
 }
 tr:nth-child(even) {
   /* background-color: #f2f2f2; */

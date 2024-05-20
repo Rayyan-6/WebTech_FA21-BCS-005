@@ -3,11 +3,47 @@ let router = express.Router();
 let Book = require("../../models/Book");
 
 // read all
+// router.get("/api/books", async function (req, res) {
+//   let books = await Book.find();
+//   return res.send(books);
+// });
+
+// read with pagination
+// Route to get books with pagination
 router.get("/api/books", async function (req, res) {
-  let books = await Book.find();
-  return res.send(books);
+  // Extract page and limit from query parameters with default values
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  try {
+    // Calculate the number of documents to skip
+    const skip = (page - 1) * limit;
+
+    // Fetch the subset of books
+    const books = await Book.find().skip(skip).limit(limit);
+
+    // Get the total number of documents in the collection
+    const totalBooks = await Book.countDocuments();
+
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(totalBooks / limit);
+
+    // Respond with paginated results
+    res.json({
+      data: books,
+      totalBooks: totalBooks,
+      totalPages: totalPages,
+      currentPage: page,
+      limit: limit
+    });
+  } catch (err) {
+    // Handle errors
+    res.status(500).json({ message: err.message });
+  }
 });
 
+
+///////////////////////////////////////////////////////////
 // read one
 router.get("/books/:id", async (req, res) => {
   try{

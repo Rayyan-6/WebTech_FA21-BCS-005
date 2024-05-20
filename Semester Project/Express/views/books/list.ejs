@@ -5,9 +5,24 @@
         <input type="text" placeholder="Type here to search...">
         <button type="button">Search</button>
     </div>
+
+    <!-- pagination.ejs -->
+<div class="pagination">
+    <% if (currentPage > 1) { %>
+        <a href="/books?limit=<%= limit %>&page=<%= currentPage - 1 %>">Previous</a>
+    <% } %>
+    <% for (let i = 1; i <= totalPages; i++) { %>
+        <% if (i === currentPage) { %>
+            <span><%= i %></span>
+        <% } else { %>
+            <a href="/books?limit=<%= limit %>&page=<%= i %>"><%= i %></a>
+        <% } %>
+    <% } %>
+    <% if (currentPage < totalPages) { %>
+        <a href="/books?limit=<%= limit %>&page=<%= currentPage + 1 %>">Next</a>
+    <% } %>
+</div>
     
-
-
     <div class="row table-row">
     <table class="mytable">
         <tr>
@@ -16,7 +31,7 @@
             <th>Genre</th>
             <th>Year</th>
             <th>Price (PKR)</th>
-            <th>Action</th> <!-- Added column for the "Buy" button -->
+            <th>Action</th> 
         </tr>
         <% for (let index = 0; index < books.length; index++) { %>
             <tr>
@@ -30,17 +45,21 @@
                 </td>
                 <td><%= books[index].year %></td>
                 <td>Rs. <%= books[index].price %></td>
-                <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= books[index].title %>')">Buy</button></td> <!-- Buy button -->
+                <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= books[index].title %>')">Buy</button></td> 
             </tr>
         <% } %>
     </table>
 </div>
 
-    <!-- JavaScript function for buying a book -->
     <script>
         function buyBook(title) {
             // You can implement the logic for buying a book here
             alert("You have bought the book: " + title);
         }
     </script>
+
+
+
+
+
 
