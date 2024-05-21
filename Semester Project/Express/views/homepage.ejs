@@ -29,57 +29,28 @@
   <div class="row  book-slide col-md-9">
 
     <!-- cards moving! -->
-    <div class="card slide-view-card" style="width: 18rem;">
+    <!-- <div class="card slide-view-card" style="width: 18rem;">
       <img src="bookC.jpg" class="card-img-top" alt="...">
       <div class="card-body slide-view-card-body">
         <p class="card-text">Some quick example text.</p>
-        <div class="row centered-items">
-        <button id="myButton" class="btn btn-info">Buy</button>
+        <div class="row centered-items" style="background-color: blue;">
+        <button id="" class="btn btn-info">Buy</button>
       </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="card slide-view-card" style="width: 18rem;">
-      <img src="bookC.jpg" class="card-img-top" alt="...">
-      <div class="card-body slide-view-card-body">
-        <p class="card-text">Some quick example text.</p>
-        <div class="row centered-items">
-        <button class="btn btn-info">Buy</button>
+    <% for(let i = 0; i < 10; i++) { %>
+      <div class="card slide-view-card" style="width: 18rem;">
+        <img src="bookC.jpg" class="card-img-top" alt="...">
+        <div class="card-body slide-view-card-body">
+          <!-- <p class="card-text">Some quick example text.</p> -->
+          <p class="">Some quick example text meow.</p>
+          <div class="row centered-items" >
+            <button id="" class="btn ">Buy</button>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
-
-    <div class="card slide-view-card" style="width: 18rem;">
-      <img src="bookC.jpg" class="card-img-top" alt="...">
-      <div class="card-body slide-view-card-body">
-        <p class="card-text">Some quick example text.</p>
-        <div class="row centered-items">
-        <button class="btn btn-info">Buy</button>
-      </div>
-      </div>
-    </div>
-
-    <div class="card slide-view-card" style="width: 18rem;">
-      <img src="bookC.jpg" class="card-img-top" alt="...">
-      <div class="card-body slide-view-card-body">
-        <p class="card-text">Some quick example text.</p>
-        <div class="row centered-items">
-        <button class="btn btn-info">Buy</button>
-      </div>
-      </div>
-    </div>
-    
-    <div class="card slide-view-card" style="width: 18rem;">
-      <img src="bookC.jpg" class="card-img-top" alt="...">
-      <div class="card-body slide-view-card-body">
-        <p class="card-text">Some quick example text.</p>
-        <div class="row centered-items">
-        <button class="btn btn-info">Buy</button>
-      </div>
-      </div>
-    </div>
-    
-
+    <% } %>
     
 
 
