@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
 // const path = require("path");
 const app = express();
 app.use(express.json());
@@ -7,6 +9,10 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 var expressLayouts = require("express-ejs-layouts");
 app.use(expressLayouts);
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
 
 let User = require("./models/User");
 
@@ -35,6 +41,7 @@ app.get("/apipage", function (req, res) {
 
 
 app.post("/signup", async (req, res) => {
+  console.log(req.body)
   try {
     const existingUser = await User.findOne({ email: req.body.email });
 
@@ -60,6 +67,39 @@ app.post("/signup", async (req, res) => {
     res.status(500).send("Error during signup");
   }
 });
+
+
+// login code
+app.post("/login", async (req, res) => {
+  console.log("sdsd",req.body)
+  const { email, password} = req.body;
+  
+  try {
+    const existingUser = await User.findOne({ email: email });
+
+    console.log("Existing user:", existingUser); // Add this line for logging
+
+    if (!existingUser) {
+      return res.redirect("/signup")
+    }
+
+    console.log(existingUser.password)
+
+    console.log("dsds",password)
+
+    if(!(existingUser.password == password)){
+      return res.redirect('/login')
+    }
+
+    console.log("User saved:", existingUser); // Add this line for logging
+    res.redirect("/");
+  } catch (error) {
+    console.error("Error during signup:", error); // Add this line for logging
+    res.status(500).send("Error during signup");
+  }
+});
+
+
 
 mongoose.connect("mongodb://localhost:27017/project").then((data) => {
   console.log("DB Connected");

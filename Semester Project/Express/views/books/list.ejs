@@ -7,13 +7,13 @@
     </div>
 
     <!-- pagination.ejs -->
-<div class="pagination">
+<!-- <div class="pagination">
     <% if (currentPage > 1) { %>
         <a href="/books?limit=<%= limit %>&page=<%= currentPage - 1 %>">Previous</a>
     <% } %>
     <% for (let i = 1; i <= totalPages; i++) { %>
         <% if (i === currentPage) { %>
-            <span><%= i %></span>
+            <span class="current"><%= i %></span>
         <% } else { %>
             <a href="/books?limit=<%= limit %>&page=<%= i %>"><%= i %></a>
         <% } %>
@@ -21,15 +21,33 @@
     <% if (currentPage < totalPages) { %>
         <a href="/books?limit=<%= limit %>&page=<%= currentPage + 1 %>">Next</a>
     <% } %>
-</div>
+</div> -->
     
+<!-- modified pagination (Previous and Next buttons do not disappear)-->
+<div class="pagination">
+    <a href="<%= currentPage > 1 ? '/books?limit=' + limit + '&page=' + (currentPage - 1) : '#' %>" 
+       class="<%= currentPage > 1 ? '' : 'disabled' %>">Previous</a>
+
+    <% for (let i = 1; i <= totalPages; i++) { %>
+        <% if (i === currentPage) { %>
+            <span class="current"><%= i %></span>
+        <% } else { %>
+            <a href="/books?limit=<%= limit %>&page=<%= i %>"><%= i %></a>
+        <% } %>
+    <% } %>
+
+    <a href="<%= currentPage < totalPages ? '/books?limit=' + limit + '&page=' + (currentPage + 1) : '#' %>" 
+       class="<%= currentPage < totalPages ? '' : 'disabled' %>">Next</a>
+</div>
+
+
     <div class="row table-row">
     <table class="mytable">
         <tr>
             <th>Title</th>
             <th>Author</th>
-            <th>Genre</th>
-            <th>Year</th>
+            <th>Genres</th>
+            <th>Year Published</th>
             <th>Price (PKR)</th>
             <th>Action</th> 
         </tr>

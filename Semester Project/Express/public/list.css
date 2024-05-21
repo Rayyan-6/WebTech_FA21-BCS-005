@@ -135,6 +135,57 @@ tr:hover {
   width:max-content ;
   background-color: rgb(43, 33, 21);
   border-color: rgb(117, 93, 64);
+}
+/* Pagination */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a,
+.pagination span {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid rgb(117, 93, 64);
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination a:hover {
+  background-color: rgb(117, 93, 64);
+  color: white;
+
+}
+
+.pagination .current {
+  background-color: rgb(117, 93, 64);
+  color: white;
+}
 
 
+/* Set fixed widths for each column */
+.mytable th:nth-child(1), .mytable td:nth-child(1) {
+  width: 30%;
+}
+
+.mytable th:nth-child(2), .mytable td:nth-child(2) {
+  width: 20%;
+}
+
+.mytable th:nth-child(3), .mytable td:nth-child(3) {
+  width: 25%;
+}
+
+.mytable th:nth-child(4), .mytable td:nth-child(4) {
+  width: 10%;
+}
+
+.mytable th:nth-child(5), .mytable td:nth-child(5) {
+  width: 10%;
+}
+
+.mytable th:nth-child(6), .mytable td:nth-child(6) {
+  width: 5%;
 }

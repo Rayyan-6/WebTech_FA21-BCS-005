@@ -8,7 +8,6 @@ let Book = require("../../models/Book");
 //   return res.send(books);
 // });
 
-// read with pagination
 // Route to get books with pagination
 router.get("/api/books", async function (req, res) {
   // Extract page and limit from query parameters with default values
