@@ -17,6 +17,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(require("/middlewares/checkAuth"));
 
 const checkAuth = require('./middlewares/checkAuth');
+const isAuthenticated = require('./middlewares/isAuthenticated');
+
+// app.use(require("./middlewares/siteMiddleware"));
+
 
 
 const session = require('express-session');
@@ -49,7 +53,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/contact-us", function (req, res) {
+app.get("/contact-us", isAuthenticated,function (req, res) {
   res.render("contact-us");
 });
 app.get("/signup", function (req, res) {
@@ -73,7 +77,9 @@ app.get("/apipage", function (req, res) {
   res.render("apipage");
 });
 
-
+app.get('/errorPage', (req, res) => {
+  res.render('errorPage');
+});
 
 app.post("/signup", async (req, res) => {
   console.log(req.body)
@@ -84,7 +90,8 @@ app.post("/signup", async (req, res) => {
 
     if (existingUser) {
       console.log("User already exists with email:", req.body.email); // Add this line for logging
-      return res.status(400).send("User already exists");
+      // return res.status(400).send("User already exists");
+      return res.render("errorPage",{ msg: "This user already exists" });
     }
 
     // Create a new user
@@ -103,39 +110,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-
-// login code
-// app.post("/login", async (req, res) => {
-//   console.log("sdsd",req.body)
-//   const { email, password} = req.body;
-  
-//   try {
-//     const existingUser = await User.findOne({ email: email });
-
-//     console.log("Existing user:", existingUser); 
-
-//     if (!existingUser) {
-//       return res.redirect("/signup")
-//     }
-
-//     console.log(existingUser.password)
-
-//     console.log("dsds",password)
-
-//     if(!(existingUser.password == password)){
-//       return res.redirect('/login')
-//     }
-
-//     console.log("User saved:", existingUser);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.error("Error during signup:", error); 
-//     res.status(500).send("Error during signup");
-//   }
-// });
-
-
-// my new login with sessions
+// Login with sessions
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
