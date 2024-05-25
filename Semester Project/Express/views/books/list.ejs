@@ -1,12 +1,12 @@
+<h1 class="list-heading"><%= pageTitle %></h1>
 
-    <h1 class="list-heading"><%= pageTitle %></h1>
+<div class="search-box">
+  <input type="text" id="search-input" placeholder="Type here to search..." />
+  <button type="button" id="search-button">Search</button>
+</div>
+<div id="search-results"></div>
 
-    <div class="search-box">
-        <input type="text" placeholder="Type here to search...">
-        <button type="button">Search</button>
-    </div>
-
-    <!-- pagination.ejs -->
+<!-- pagination.ejs (Previous and Next buttons disappear)-->
 <!-- <div class="pagination">
     <% if (currentPage > 1) { %>
         <a href="/books?limit=<%= limit %>&page=<%= currentPage - 1 %>">Previous</a>
@@ -22,12 +22,28 @@
         <a href="/books?limit=<%= limit %>&page=<%= currentPage + 1 %>">Next</a>
     <% } %>
 </div> -->
-    
-<!-- modified pagination (Previous and Next buttons do not disappear)-->
-<div class="pagination">
+
+
+
+
+<!-- Limit Form Container -->
+<div class=" limit-row">
+    <form action="/books" method="get" class="limit-form">
+        <label for="limit">Items per page:</label>
+        <input type="number" id="limit" name="limit" value="<%= limit %>" min="1" />
+        <input type="hidden" name="page" value="<%= currentPage %>" />
+        <button type="submit">Set Limit</button>
+    </form>
+</div>
+
+
+  <!-- modified pagination (Previous and Next buttons do not disappear)-->
+  <div class="pagination">
+    <!-- Previous button -->
     <a href="<%= currentPage > 1 ? '/books?limit=' + limit + '&page=' + (currentPage - 1) : '#' %>" 
        class="<%= currentPage > 1 ? '' : 'disabled' %>">Previous</a>
-
+  
+    <!-- Page numbers -->
     <% for (let i = 1; i <= totalPages; i++) { %>
         <% if (i === currentPage) { %>
             <span class="current"><%= i %></span>
@@ -35,49 +51,53 @@
             <a href="/books?limit=<%= limit %>&page=<%= i %>"><%= i %></a>
         <% } %>
     <% } %>
-
+  
+    <!-- Next button -->
     <a href="<%= currentPage < totalPages ? '/books?limit=' + limit + '&page=' + (currentPage + 1) : '#' %>" 
        class="<%= currentPage < totalPages ? '' : 'disabled' %>">Next</a>
+  </div>
+  
+
+
+<!-- /////////////////////////////////////////////////////// -->
+
+<div class="row table-row">
+  <table class="mytable">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genres</th>
+      <th>Year Published</th>
+      <th>Price (PKR)</th>
+      <th>Action</th>
+    </tr>
+    <% for (let index = 0; index < books.length; index++) { %>
+    <tr>
+      <td><%= books[index].title %></td>
+      <td><%= books[index].author %></td>
+      <td class="genre-cell">
+        <% for (let genreIndex = 0; genreIndex < books[index].genre.length;
+        genreIndex++) { %> <%= books[index].genre[genreIndex] %> <% if
+        (genreIndex !== books[index].genre.length - 1) { %>, <% } %> <% } %>
+      </td>
+      <td><%= books[index].year %></td>
+      <td>Rs. <%= books[index].price %></td>
+      <td>
+        <button
+          class="btn btn-success buy-btn"
+          onclick="buyBook('<%= books[index].title %>')"
+        >
+          Buy
+        </button>
+      </td>
+    </tr>
+    <% } %>
+  </table>
 </div>
 
-
-    <div class="row table-row">
-    <table class="mytable">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genres</th>
-            <th>Year Published</th>
-            <th>Price (PKR)</th>
-            <th>Action</th> 
-        </tr>
-        <% for (let index = 0; index < books.length; index++) { %>
-            <tr>
-                <td><%= books[index].title %></td>
-                <td><%= books[index].author %></td>
-                <td class="genre-cell">
-                    <% for (let genreIndex = 0; genreIndex < books[index].genre.length; genreIndex++) { %>
-                        <%= books[index].genre[genreIndex] %>
-                        <% if (genreIndex !== books[index].genre.length - 1) { %>, <% } %>
-                    <% } %>
-                </td>
-                <td><%= books[index].year %></td>
-                <td>Rs. <%= books[index].price %></td>
-                <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= books[index].title %>')">Buy</button></td> 
-            </tr>
-        <% } %>
-    </table>
-</div>
-
-    <script>
-        function buyBook(title) {
-            // You can implement the logic for buying a book here
-            alert("You have bought the book: " + title);
-        }
-    </script>
-
-
-
-
-
-
+<script>
+  function buyBook(title) {
+    // You can implement the logic for buying a book here
+    alert("You have bought the book: " + title);
+  }
+</script>

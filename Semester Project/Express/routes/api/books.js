@@ -8,21 +8,63 @@ let Book = require("../../models/Book");
 //   return res.send(books);
 // });
 
+////////////////////////////////////////////////////////////////////////////
 // Route to get books with pagination
+// router.get("/api/books", async function (req, res) {
+//   // Extract page and limit from query parameters with default values
+//   const page = parseInt(req.query.page) || 1;
+//   const limit = parseInt(req.query.limit) || 10;
+
+//   try {
+//     // Calculate the number of documents to skip
+//     const skip = (page - 1) * limit;
+
+//     // Fetch the subset of books
+//     const books = await Book.find().skip(skip).limit(limit);
+
+//     // Get the total number of documents in the collection
+//     const totalBooks = await Book.countDocuments();
+
+//     // Calculate the total number of pages
+//     const totalPages = Math.ceil(totalBooks / limit);
+
+//     // Respond with paginated results
+//     res.json({
+//       data: books,
+//       totalBooks: totalBooks,
+//       totalPages: totalPages,
+//       currentPage: page,
+//       limit: limit
+//     });
+//   } catch (err) {
+//     // Handle errors
+//     res.status(500).json({ message: err.message });
+//   }
+// });
+
+
+// with search
+// Route to get books with pagination and search functionality
 router.get("/api/books", async function (req, res) {
-  // Extract page and limit from query parameters with default values
+  // Extract page, limit, and search query from query parameters with default values
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
+  const searchQuery = req.query.search || '';
 
   try {
     // Calculate the number of documents to skip
     const skip = (page - 1) * limit;
 
-    // Fetch the subset of books
-    const books = await Book.find().skip(skip).limit(limit);
+    // Create a filter object for the search query
+    const filter = searchQuery
+      ? { title: { $regex: searchQuery, $options: 'i' } } // Case-insensitive regex search
+      : {};
 
-    // Get the total number of documents in the collection
-    const totalBooks = await Book.countDocuments();
+    // Fetch the subset of books based on pagination and search criteria
+    const books = await Book.find(filter).skip(skip).limit(limit);
+
+    // Get the total number of documents in the collection matching the search criteria
+    const totalBooks = await Book.countDocuments(filter);
 
     // Calculate the total number of pages
     const totalPages = Math.ceil(totalBooks / limit);
@@ -40,7 +82,6 @@ router.get("/api/books", async function (req, res) {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 ///////////////////////////////////////////////////////////
 // read one

@@ -15,11 +15,8 @@
     crossorigin="anonymous">
   </script>
 
-    <script src="layout.js">
-    
-
-    </script>
-    <script src="apipage.js"></script>
+    <script src="layout.js"></script>
+    <script src="list.js"></script>
     
     
     <link
@@ -74,21 +71,22 @@
 
               </div>
               
-              <div class="row nav-login-row">
-                  
-              <button class="btn btn-info nav-btns" id="login-btn">
-                Login
-              </button>
-              <button class="btn btn-info nav-btns" id="signup-btn">
-                Sign Up
-              </button>
-            
-            </div>
               
-            
+
+
+            <div class="row nav-login-row">
+              <% if (!isAuthenticated) { %>
+                  <button class="btn btn-info nav-btns" id="login-btn">Login</button>
+                  <button class="btn btn-info nav-btns" id="signup-btn">Sign Up</button>
+              <% } else { %>
+                  <button class="btn btn-info nav-btns" id="logout-btn">Logout</button>
+              <% } %>
+          </div>
             </div>
           </nav>
 
+
+          
     <!-- --------------------------------------------- -->
     <%-body %>
 </body>
