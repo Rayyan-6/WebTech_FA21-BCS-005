@@ -213,3 +213,25 @@ body #left-half{
     width: 40%;
 
 }
+
+/* animation */
+
+#myname{
+    font-size: 2em;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides the overflowing text */
+    border-right: 0.15em solid orange; /* Creates a cursor effect */
+    width: 0; /* Ensures the text is hidden initially */
+    animation: typing 4s steps(22, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
