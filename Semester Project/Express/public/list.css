@@ -131,12 +131,26 @@ tr:hover {
   --bs-btn-active-border-color: rgb(43, 33, 21);
   --bs-btn-active-color: white;
 }
+
 .buy-btn:hover{
   width:max-content ;
   background-color: rgb(43, 33, 21);
   border-color: rgb(117, 93, 64);
 }
 
+.blur-btn{
+  width:max-content ;
+  background-color: rgb(185, 184, 183);
+  border-color: rgb(185, 184, 183);
+  --bs-btn-active-bg: rgb(185, 184, 183);
+  --bs-btn-active-border-color: rgb(185, 184, 183);
+  --bs-btn-active-color: white;
+}
+.blur-btn:hover{
+  width:max-content ;
+  background-color: rgb(185, 184, 183);
+  border-color: rgb(185, 184, 183);
+}
 
 /* Pagination */
 .pagination {

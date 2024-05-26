@@ -1,3 +1,5 @@
+const isAuthenticated = require("../middlewares/isAuthenticated");
+
 $(document).ready(function() {
     $('#search-button').on('click', function() {
         const query = $('#search-input').val();
@@ -80,3 +82,34 @@ $(document).ready(function() {
         resultsContainer.html(`<p class="error">An error occurred: ${error.message}</p>`);
     }
 });   
+
+function buyBook(title) {
+    // You can implement the logic for buying a book here
+    alert("You have bought the book: " + title);
+  }
+  function blurBook(){
+    alert("Please login first")
+  }
+
+// function buyBook(bookTitle) {
+   
+//     fetch('/cart', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ title: bookTitle }),
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       if (data.success) {
+//         alert('Book added to cart successfully!');
+//       } else {
+//         alert('Failed to add book to cart.');
+//       }
+//     })
+//     .catch(error => {
+//       console.log('Error adding book to cart:', error);
+//       alert('Error adding book to cart.');
+//     });
+//   }

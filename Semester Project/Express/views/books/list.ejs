@@ -83,21 +83,27 @@
       <td><%= books[index].year %></td>
       <td>Rs. <%= books[index].price %></td>
       <td>
+        <% if (isAuthenticated) {%>
         <button
           class="btn btn-success buy-btn"
           onclick="buyBook('<%= books[index].title %>')"
         >
           Buy
         </button>
+        <%} else {%>
+          <button
+          class="btn btn-success blur-btn"
+          onclick="blurBook()"
+        >
+          Buy
+        </button>
+
+          <%}%>
+
       </td>
     </tr>
     <% } %>
   </table>
 </div>
 
-<script>
-  function buyBook(title) {
-    // You can implement the logic for buying a book here
-    alert("You have bought the book: " + title);
-  }
-</script>
+
