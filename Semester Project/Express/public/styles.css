@@ -82,11 +82,11 @@ body {
 .lowText {
   color: rgb(180, 0, 0);
 }
-.btnContainer button {
+.btnContainer button{
   background-color: rgb(117, 93, 64);
   border-color: rgb(117, 93, 64);
   color: white;
-    --bs-btn-active-bg: rgb(43, 33, 21);
+  --bs-btn-active-bg: rgb(43, 33, 21);
   --bs-btn-active-border-color: rgb(43, 33, 21);
   --bs-btn-active-color: white;
 }
@@ -96,4 +96,25 @@ body {
   color: white;
 
   /* font-weight: bold; */
+}
+
+.footer-btn{
+  background-color: rgb(73, 55, 34);
+  border-color: rgb(73, 55, 34);
+  color: white;
+  --bs-btn-active-bg: rgb(43, 33, 21);
+}
+.footer-btn:hover{
+  background-color: rgb(43, 33, 21);
+  border-color: rgb(73, 55, 34);
+  color: white;
+}
+
+.footer-main{
+  background-color: rgb(117, 93, 64);
+}
+
+footer{
+  /* background-color: red; */
+  width: 100%;
 }
