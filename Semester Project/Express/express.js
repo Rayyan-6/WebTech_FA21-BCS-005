@@ -6,8 +6,9 @@ const cookieParser = require("cookie-parser");
 // const path = require("path");
 const app = express();
 app.use(express.json());
+const jwt = require("jsonwebtoken");
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -18,9 +19,11 @@ app.use(expressLayouts);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 const checkAuth = require("./middlewares/checkAuth");
 const isAuthenticated = require("./middlewares/isAuthenticated");
+const auth = require("./middlewares/auth");
+
+// app.use(auth)
 
 // app.use(require("./middlewares/siteMiddleware"));
 
@@ -79,10 +82,9 @@ app.get("/login", function (req, res) {
 // });
 
 app.get("/logout", (req, res) => {
-  req.session.user=null;
-    // res.clearCookie("connect.sid"); // Ensure the session cookie is cleared
-    res.redirect("/");
-  
+  req.session.user = null;
+  // res.clearCookie("connect.sid"); // Ensure the session cookie is cleared
+  res.redirect("/");
 });
 
 app.get("/apipage", function (req, res) {
@@ -93,38 +95,73 @@ app.get("/errorPage", (req, res) => {
   res.render("errorPage");
 });
 
+// legacy signup
+// app.post("/signup", async (req, res) => {
+//   console.log(req.body);
+//   try {
+//     const existingUser = await User.findOne({ email: req.body.email });
+
+//     if (existingUser) {
+//       console.log("User already exists with email:", req.body.email); // Add this line for logging
+//       // return res.status(400).send("User already exists");
+//       return res.render("errorPage", { msg: "This user already exists" });
+//     }
+
+//     // Create a new user
+//     // const newUser = new User({
+//     //   name: req.body.name,
+//     //   email: req.body.email,
+//     //   password: req.body.password,
+//     // });
+
+//     const newUser = new User(req.body);
+
+//     const token= jwt.sign({id:newUser._id},'privateKey');
+
+//     const salt = await bcrypt.genSalt(10);
+//     newUser.password = await bcrypt.hash(req.body.password, salt);
+
+//     await newUser.save();
+//     console.log("User saved:", newUser); // Add this line for logging
+//     res.redirect("/login");
+//   } catch (error) {
+//     console.error("Error during signup:", error); // Add this line for logging
+//     res.status(500).send("Error during signup");
+//   }
+// });
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// new signup with tokens
 app.post("/signup", async (req, res) => {
   console.log(req.body);
   try {
     const existingUser = await User.findOne({ email: req.body.email });
 
     if (existingUser) {
-      console.log("User already exists with email:", req.body.email); // Add this line for logging
+      console.log("User already exists with email:", req.body.email); 
       // return res.status(400).send("User already exists");
       return res.render("errorPage", { msg: "This user already exists" });
     }
-
-    // Create a new user
-    // const newUser = new User({
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   password: req.body.password,
-    // });
-
     const newUser = new User(req.body);
-const salt = await bcrypt.genSalt(10);
-newUser.password = await bcrypt.hash(req.body.password, salt);
 
+    const token= jwt.sign({id:newUser._id},'privateKey');
+
+    const salt = await bcrypt.genSalt(10);
+    newUser.password = await bcrypt.hash(req.body.password, salt);
 
     await newUser.save();
-    console.log("User saved:", newUser); // Add this line for logging
-    res.redirect("/login");
-  } catch (error) {
-    console.error("Error during signup:", error); // Add this line for logging
+    console.log("User saved:", newUser); 
+    res.cookie('auth_token', token, { httpOnly: true, secure: true });
+    res.redirect("/login")
+  } 
+  catch (error) {
+    console.error("Error during signup:", error); 
     res.status(500).send("Error during signup");
   }
 });
-
+////////////////////////////////////////////////////////////////////////////////
 // Login with sessions
 // app.post("/login", async (req, res) => {
 //   const { email, password } = req.body;
@@ -155,16 +192,54 @@ newUser.password = await bcrypt.hash(req.body.password, salt);
 // });
 
 
-app.post("/login", async (req, res) => {
+// Legacy login code
+// app.post("/login", async (req, res) => {
+//   try {
+//     const existingUser = await User.findOne({ email: req.body.email });
 
+//     if (!existingUser) {
+//       return res.render("errorPage", { msg: "User doesn't exist" });
+//     }
+
+//     const validPassword = await bcrypt.compare(
+//       req.body.password,
+//       existingUser.password
+//     );
+
+//     if (validPassword) {
+//       // Store user information in the session
+//       req.session.user = {
+//         id: existingUser._id,
+//         name: existingUser.name,
+//         email: existingUser.email,
+//       };
+//       return res.redirect("/");
+//     } else {
+//       // Password is invalid
+//       console.log("password invalid");
+//       return res.render("errorPage", { msg: "Password incorrect" });
+//     }
+//   } catch (error) {
+//     console.error("Error during login:", error);
+//     res.status(500).send("Error during login");
+//   }
+// });
+
+
+
+// new login with tokens
+app.post("/login", async (req, res) => {
   try {
     const existingUser = await User.findOne({ email: req.body.email });
 
     if (!existingUser) {
-      return res.render("errorPage",{msg:"User doesn't exist"});
+      return res.render("errorPage", { msg: "User doesn't exist" });
     }
 
-    const validPassword = await bcrypt.compare(req.body.password, existingUser.password);
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      existingUser.password
+    );
 
     if (validPassword) {
       // Store user information in the session
@@ -173,18 +248,21 @@ app.post("/login", async (req, res) => {
         name: existingUser.name,
         email: existingUser.email,
       };
+
+      const token= jwt.sign({id:existingUser._id},'privateKey');
+
+
       return res.redirect("/");
     } else {
       // Password is invalid
       console.log("password invalid");
-      return res.render("errorPage",{msg:"Password incorrect"});
+      return res.render("errorPage", { msg: "Password incorrect" });
     }
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).send("Error during login");
   }
 });
-
 
 
 
