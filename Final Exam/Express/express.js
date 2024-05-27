@@ -14,7 +14,7 @@ const bcrypt = require("bcryptjs");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 var expressLayouts = require("express-ejs-layouts");
-var morgan = require("morgan");
+
 app.use(expressLayouts);
 
 app.use(bodyParser.json());
@@ -306,7 +306,7 @@ app.get('/', (req, res) => {
 app.post('/search', async (req, res) => {
   const searchQuery = req.body.query;
   try {
-    // Initialize search history array in user session if it doesn't exist
+    
     if (!req.session.searchHistory) {
       req.session.searchHistory = [];
     }
