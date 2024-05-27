@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <a href="/books">Go Back</a>
+    <ul>
+        
+        <% if (books && books.length === 0) { %>
+            <li>No books found</li>
+        <% } else if (books) { %>
+            <% books.forEach(book => { %>
+                <li>
+                    <h2><%= book.title %></h2>
+                    <p><strong>Author:</strong> <%= book.author %></p>
+                    <p><strong>Genre:</strong> <%= book.genre.join(', ') %></p>
+                    <p><strong>Year:</strong> <%= book.year %></p>
+                    <p><strong>Price:</strong> Rs. <%= book.price %></p>
+                </li>
+            <% }) %>
+        <% } %>
+    </ul>
+</body>
+</html>

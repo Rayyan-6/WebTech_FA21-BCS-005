@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 // const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const axios = require('axios');
 // const path = require("path");
 const app = express();
 app.use(express.json());
@@ -17,7 +18,7 @@ var morgan = require("morgan");
 app.use(expressLayouts);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const checkAuth = require("./middlewares/checkAuth");
 const isAuthenticated = require("./middlewares/isAuthenticated");
@@ -69,6 +70,10 @@ app.get("/signup", function (req, res) {
 });
 app.get("/login", function (req, res) {
   res.render("login");
+});
+
+app.get("/search", function (req, res) {
+  res.render("search");
 });
 
 // app.get("/logout", (req, res) => {
@@ -130,8 +135,6 @@ app.get("/errorPage", (req, res) => {
 //   }
 // });
 
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // new signup with tokens
 app.post("/signup", async (req, res) => {
@@ -140,24 +143,23 @@ app.post("/signup", async (req, res) => {
     const existingUser = await User.findOne({ email: req.body.email });
 
     if (existingUser) {
-      console.log("User already exists with email:", req.body.email); 
+      console.log("User already exists with email:", req.body.email);
       // return res.status(400).send("User already exists");
       return res.render("errorPage", { msg: "This user already exists" });
     }
     const newUser = new User(req.body);
 
-    const token= jwt.sign({id:newUser._id},'privateKey');
+    const token = jwt.sign({ id: newUser._id }, "privateKey");
 
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(req.body.password, salt);
 
     await newUser.save();
-    console.log("User saved:", newUser); 
-    res.cookie('auth_token', token, { httpOnly: true, secure: true });
-    res.redirect("/login")
-  } 
-  catch (error) {
-    console.error("Error during signup:", error); 
+    console.log("User saved:", newUser);
+    res.cookie("auth_token", token, { httpOnly: true, secure: true });
+    res.redirect("/login");
+  } catch (error) {
+    console.error("Error during signup:", error);
     res.status(500).send("Error during signup");
   }
 });
@@ -190,7 +192,6 @@ app.post("/signup", async (req, res) => {
 //     res.status(500).send("Error during login");
 //   }
 // });
-
 
 // Legacy login code
 // app.post("/login", async (req, res) => {
@@ -225,8 +226,6 @@ app.post("/signup", async (req, res) => {
 //   }
 // });
 
-
-
 // new login with tokens
 app.post("/login", async (req, res) => {
   try {
@@ -249,8 +248,7 @@ app.post("/login", async (req, res) => {
         email: existingUser.email,
       };
 
-      const token= jwt.sign({id:existingUser._id},'privateKey');
-
+      const token = jwt.sign({ id: existingUser._id }, "privateKey");
 
       return res.redirect("/");
     } else {
@@ -263,6 +261,100 @@ app.post("/login", async (req, res) => {
     res.status(500).send("Error during login");
   }
 });
+
+// for search
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+
+// this working till now
+// app.post('/search', async (req, res) => {
+//   const searchQuery = req.body.query;
+//   try {
+
+// // Inside your route handler
+
+//     const response = await axios.get('http://localhost:4000/api/books');
+//     console.log('API Response:', response.data); // Log the response data
+//     const books = response.data.data; // Access the data property to get the books array
+
+//     // Ensure that books is an array
+//     if (!Array.isArray(books)) {
+//       throw new Error('API did not return an array of books');
+//     }
+
+//     const filteredBooks = books.filter(
+//       (book) =>
+//         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+//         book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+//         book.genre.some((g) =>
+//           g.toLowerCase().includes(searchQuery.toLowerCase())
+//         )
+//     );
+//     console.log("The books response is >>>>>",filteredBooks)
+//     res.render('search', { books: filteredBooks });
+//   } catch (error) {
+//     console.error('Error fetching books:', error.message);
+//     console.error('Error details:', error.response ? error.response.data : 'No response data');
+//     res.status(500).send('Error fetching books');
+//   }
+// });
+
+
+app.post('/search', async (req, res) => {
+  const searchQuery = req.body.query;
+  try {
+    // Initialize search history array in user session if it doesn't exist
+    if (!req.session.searchHistory) {
+      req.session.searchHistory = [];
+    }
+    // Store the search query in the user's session
+    req.session.searchHistory.push(searchQuery);
+    
+    // Original search functionality
+    const response = await axios.get('http://localhost:4000/api/books');
+    // Filter books based on search query
+    // Render search results
+    console.log('API Response:', response.data); // Log the response data
+    const books = response.data.data; // Access the data property to get the books array
+
+    // Ensure that books is an array
+    if (!Array.isArray(books)) {
+      throw new Error('API did not return an array of books');
+    }
+
+    const filteredBooks = books.filter(
+      (book) =>
+        book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.genre.some((g) =>
+          g.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+    );
+    console.log("The books response is >>>>>",filteredBooks)
+    res.render('search', { books: filteredBooks });
+  } catch (error) {
+    // Handle errors
+    console.error('Error fetching books:', error.message);
+    console.error('Error details:', error.response ? error.response.data : 'No response data');
+    res.status(500).send('Error fetching books');
+  }
+});
+
+
+app.get('/history', (req, res) => {
+  // Retrieve search history from user session
+  const searchHistory = req.session.searchHistory || [];
+  res.render('history', { searchHistory });
+});
+
+
+
+
+
+
 
 
 
