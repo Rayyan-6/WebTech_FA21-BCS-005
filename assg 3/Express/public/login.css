@@ -1,0 +1,54 @@
+.login-main-row{
+    height: 80vh;
+    /* background: beige; */
+
+}
+.login-main-col{
+    /* height: 100%; */
+    /* background: red; */
+}
+.login-left-col{
+    /* background-color: wheat; */
+
+    /* background-image: url('bookSketch.png'); */
+            background-size: cover; /* Options: cover, contain */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent image repetition */
+}
+.inner-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: rgb(143, 121, 84); */
+    width: 80%;
+}
+
+#submitBtn{
+    margin-top: 5%;
+}
+
+/* signup */
+
+.main-signup-row{
+    height: 85vh;
+    /* background: blue; */
+
+}
+
+.signup-main-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        /* background: beige; */
+
+}
+
+.sideImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.signup-right-col{
+    /* background-color: green; */
+}

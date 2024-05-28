@@ -1,0 +1,120 @@
+body {
+  background-color: rgb(201, 163, 113);
+}
+
+/* nav bar */
+.nav-login-row {
+  /* background: red; */
+  /* padding-right: 10%; */
+  width: 50%;
+  display: flex;
+  justify-content: end;
+}
+
+.nav-btns {
+  /* margin-top: 10%; */
+  /* margin-right: 10%; */
+  background-color: rgb(117, 93, 64);
+  border-color: #755d40;
+  color: black;
+  /* font-weight: bold; */
+  --bs-btn-active-bg: rgb(43, 33, 21);
+  --bs-btn-active-border-color: rgb(43, 33, 21);
+  --bs-btn-active-color: white;
+}
+.nav-btns:hover {
+  background-color: rgb(73, 55, 34);
+  border-color: rgb(73, 55, 34);
+  color: white;
+  /* font-weight: bold; */
+}
+#login-btn{
+  margin-right: 5%;
+  width: 15%;
+  height: 100%;
+  color: white;
+}
+#signup-btn{
+  /* margin-right: 5%; */
+  width: 15%;
+  height: 100%;
+  color: white;
+}
+
+.contact-form {
+  margin-top: 50px;
+}
+.container-fluid > a {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.row {
+  margin: 6px;
+}
+
+.form-label {
+  font-size: 25px;
+}
+.lowText {
+  text-align: right;
+}
+.btnContainer {
+  text-align: center;
+}
+.btn {
+  width: 50%;
+}
+.form-control {
+  background-color: rgb(173, 141, 101);
+  border-color: rgb(173, 141, 101);
+}
+/* .form-control:active{
+      background-color: rgb(173, 141, 101);
+      border-color:rgb(173, 141, 101) ;
+    
+    } */
+.error {
+  border: 3px solid red;
+  border-color: red;
+}
+
+.lowText {
+  color: rgb(180, 0, 0);
+}
+.btnContainer button{
+  background-color: rgb(117, 93, 64);
+  border-color: rgb(117, 93, 64);
+  color: white;
+  --bs-btn-active-bg: rgb(43, 33, 21);
+  --bs-btn-active-border-color: rgb(43, 33, 21);
+  --bs-btn-active-color: white;
+}
+.btnContainer button:hover {
+  background-color: rgb(73, 55, 34);
+  border-color: rgb(73, 55, 34);
+  color: white;
+
+  /* font-weight: bold; */
+}
+
+.footer-btn{
+  background-color: rgb(73, 55, 34);
+  border-color: rgb(73, 55, 34);
+  color: white;
+  --bs-btn-active-bg: rgb(43, 33, 21);
+}
+.footer-btn:hover{
+  background-color: rgb(43, 33, 21);
+  border-color: rgb(73, 55, 34);
+  color: white;
+}
+
+.footer-main{
+  background-color: rgb(117, 93, 64);
+}
+
+footer{
+  /* background-color: red; */
+  width: 100%;
+}

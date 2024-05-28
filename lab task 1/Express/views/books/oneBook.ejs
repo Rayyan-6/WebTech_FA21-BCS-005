@@ -1,0 +1,40 @@
+ <h1 class="list-heading"><%= pageTitle %></h1>
+
+ <div class="row table-row">
+<table class="mytable">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Year</th>
+        <th>Price (PKR)</th>
+        <th>Action</th> 
+    </tr>
+    
+        <tr>
+            <td><%= book.title %></td>
+            <td><%= book.author %></td>
+            <td class="genre-cell">
+                <% for (let genreIndex = 0; genreIndex < book.genre.length; genreIndex++) { %>
+                    <%= book.genre[genreIndex] %>
+                    <% if (genreIndex !== book.genre.length - 1) { %>, <% } %>
+                <% } %>
+            </td>
+            <td><%= book.year %></td>
+            <td><%= book.price %></td>
+            <td><button class="btn btn-success buy-btn" onclick="buyBook('<%= book.title %>')">Buy</button></td> 
+        </tr> 
+
+</table> 
+</div>
+
+<!-- JavaScript function for buying a book -->
+<script>
+    function buyBook(title) {
+        // You can implement the logic for buying a book here
+        alert("You have bought the book: " + title);
+    }
+</script>
+
+
+
